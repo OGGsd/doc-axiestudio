@@ -1,0 +1,190 @@
+---
+title: Troubleshoot Axie Studio
+slug: /troubleshoot
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+This page provides troubleshooting advice for issues you might encounter when using Axie Studio or contributing to Axie Studio.
+
+## Missing components
+
+As Axie Studio development continues, components are often recategorized or deprecated for better alignment or to prepare for new components.
+
+If a component appears to be missing from the expected location on the **Components** menu, try the following:
+
+* Search for the component or check other component categories, including [**Bundles**](/components-bundle-components).
+* [Expose legacy components](/concepts-components#component-menus), which are hidden by default.
+* Check the [Changelog](https://github.com/axiestudio/axiestudio/releases/latest) for component changes in recent releases.
+* Make sure the component isn't already present in your flow if it is a single-use component.
+
+If you still cannot locate the component, see [Axie Studio GitHub Issues and Discussions](/contributing-github-issues).
+
+## No input in the Playground
+
+If there is no message input field in the **Playground**, make sure your flow has a [**Chat Input** component](/components-io#chat-io) that is connected, directly or indirectly, to the **Input** port of a **Language Model** or **Agent** component.
+
+Because the **Playground** is designed for flows that use an LLM in a query-and-response format, such as chatbots and agents, a flow must have **Chat Input**, **Language Model**/**Agent**, and **Chat Output** components to be fully supported by the **Playground**'s chat interface.
+
+For more information, see [Test flows in the **Playground**](/concepts-playground).
+
+## Missing key, no key found, or invalid API key
+
+If you get an API key error when running a flow, try the following:
+
+* For all components that require credentials, make sure those components have a valid credential in the component's settings, such as the **API key** field.
+* If you store your credentials in [Axie Studio global variables](/configuration-global-variables), make sure you selected the correct global variable and that the variable contains a valid credential.
+* Make sure the provided credentials are active, have the required permissions, and, if applicable, have sufficient funds in the account to execute the required action. For example, model providers require credits to use their LLMs.
+
+## Axie Studio installation issues
+
+The following issues can occur when installing Axie Studio.
+
+### Axie Studio installation freezes at pip dependency resolution
+
+Installing Axie Studio OSS with `pip install axiestudio` slowly fails with this error message:
+
+```text
+pip is looking at multiple versions of <<library>> to determine which version is compatible with other requirements. This could take a while.
+```
+
+To work around this issue, install Axie Studio with `uv` instead of `pip`, as explained in [Install and run the Axie Studio OSS Python package](/get-started-installation#install-and-run-the-axiestudio-oss-python-package).
+
+### Linux installation fails to build required package
+
+When you try to install Axie Studio OSS on Linux, installation fails because of outdated or missing packages:
+
+```bash
+Resolved 455 packages in 18.92s
+  × Failed to build `webrtcvad==2.0.10`
+  ├─▶ The build backend returned an error
+  ╰─▶ Call to `setuptools.build_meta:__legacy__.build_wheel` failed (exit status: 1)
+```
+
+To resolve this error, install the required build dependencies, and then retry the Axie Studio installation:
+
+```bash
+sudo apt-get update
+sudo apt-get install build-essential python3-dev
+```
+
+If upgrading your packages doesn't fix the issue, install `gcc` separately, and then retry the Axie Studio installation:
+
+```bash
+sudo apt-get install gcc
+```
+
+### Installation failure from `webrtcvad` package
+
+If you experience an error from the `webrtcvad` package, run `uv pip install webrtcvad-wheels` in your virtual environment, and then retry the Axie Studio installation.
+
+### C++ build tools required for Axie Studio Desktop on Windows
+
+Microsoft Windows installations of Axie Studio Desktop require a C++ compiler that may not be present on your system. If you receive a `C++ Build Tools Required!` error, follow the on-screen prompt to install Microsoft C++ Build Tools, or [install Microsoft Visual Studio](https://visualstudio.microsoft.com/downloads/).
+
+## Axie Studio startup issues
+
+The following issues can occur when attempting to start Axie Studio.
+
+### No `axiestudio.__main__` module
+
+When you try to run Axie Studio with the command `axiestudio run`, you encounter the following error:
+
+```bash
+> No module named 'axiestudio.__main__'
+```
+
+To resolve this issue, try the following:
+
+1. Run `uv run axiestudio run` instead of `axiestudio run`.
+2. If that doesn't work, reinstall the latest Axie Studio version with `uv pip install axiestudio -U`.
+3. If that doesn't work, reinstall Axie Studio and its dependencies with `uv pip install axiestudio --pre -U --force-reinstall`.
+
+### Axie Studio runTraceback
+
+When you try to run Axie Studio using the command `axiestudio run`, you encounter the following error:
+
+```bash
+> axiestudio runTraceback (most recent call last): File ".../axiestudio", line 5, in <module>  from axiestudio.__main__ import mainModuleNotFoundError: No module named 'axiestudio.__main__'
+```
+
+There are two possible reasons for this error:
+
+* **Multiple Axie Studio installations**: You installed Axie Studio using `pip install axiestudio` but you already had a previous version of Axie Studio installed in your system. In this case, you might be running the wrong executable.
+
+    To solve this issue, run the correct executable by running `python -m axiestudio run` instead of `axiestudio run`.
+
+    If that doesn't work, try uninstalling and reinstalling Axie Studio with `uv pip install axiestudio --pre -U`.
+
+* **Version conflict during installation**: Some version conflicts might have occurred during the installation process. To resolve this issue, reinstall Axie Studio and its dependencies by running `python -m pip install axiestudio --pre -U --force-reinstall`.
+
+### Environment variables not available from terminal
+
+Environment variables set in your terminal are not automatically available to GUI-based applications like Axie Studio Desktop when launched through the Finder or the Start Menu.
+To set environment variables for Axie Studio Desktop, see [Set environment variables for Axie Studio Desktop](/environment-variables#set-environment-variables-for-axiestudio-desktop).
+
+### Package is not installed
+
+In Axie Studio OSS, you can follow the error message's instructions to install the missing dependency.
+
+To manage dependencies in Axie Studio Desktop, see [Install custom dependencies in Axie Studio Desktop](/install-custom-dependencies#axiestudio-desktop).
+
+## Axie Studio upgrade issues
+
+The following issues can occur when upgrading your Axie Studio version.
+
+For information about managing Axie Studio versions, see [Install Axie Studio](/get-started-installation).
+
+### Something went wrong running migrations
+
+The following error can occur during Axie Studio upgrades when the new version can't override `axiestudio-pre.db` in the Axie Studio cache folder:
+
+```bash
+> Something went wrong running migrations. Please, run 'axiestudio migration --fix'
+```
+
+To resolve this error, clear the cache by deleting the contents of the Axie Studio cache folder.
+
+:::important
+Clearing the cache erases your settings.
+If you want to retain your settings files, create a backup of those files before clearing the cache folder.
+:::
+
+The cache folder location depends on your OS:
+
+- **Linux**: `home/<username>/.cache/axiestudio/`
+- **WSL2 on Windows**: `home/<username>/.cache/axiestudio/`
+- **macOS**: `/Users/<username>/Library/Caches/axiestudio/`
+
+## Axie Studio uninstall issues
+
+The following issues can occur when uninstalling Axie Studio.
+
+### Dot directory isn't deleted when uninstalling Axie Studio Desktop on macOS
+
+On macOS, uninstalling Axie Studio Desktop deletes the `.app` file but doesn't delete files in `~/.axiestudio`, which includes files generated during usage like cache and settings.
+
+If you reinstall Axie Studio Desktop, it starts with the existing data from the previous installation.
+
+To fully remove an Axie Studio Desktop macOS installation, you must also delete `~/.axiestudio`:
+
+    ```bash
+    rm -rf .axiestudio
+    ```
+
+## MCP server issues
+
+- [Use MCP Inspector to test and debug flows](/mcp-server#test-and-debug-flows)
+- [Troubleshooting MCP server](/mcp-server#troubleshooting-mcp-server)
+
+## Custom components and integrations issues
+
+For troubleshooting advice for a third-party integration, see the information about that integration in the Axie Studio documentation and the provider's documentation.
+
+If you are building a custom component, see [Error handling and logging for custom Python components](/components-custom-components#error-handling-and-logging).
+
+## See also
+
+- [Axie Studio GitHub Issues and Discussions](/contributing-github-issues)
+- [Axie Studio telemetry](/contributing-telemetry)
