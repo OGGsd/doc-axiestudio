@@ -79,13 +79,9 @@ const config = {
 
   presets: [
     [
-      "docusaurus-preset-openapi",
+      "classic",
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
-        api: {
-          path: "openapi.json", // Path to your OpenAPI file
-          routeBasePath: "/api", // The base URL for your API docs
-        },
         docs: {
           routeBasePath: process.env.DOCS_ROUTE_BASE_PATH || "/", // Serve the docs at the site's root or custom path
           sidebarPath: require.resolve("./sidebars.js"), // Use sidebars.js file
@@ -175,13 +171,7 @@ const config = {
               "/guides-new-to-llms",
             ],
           },
-          {
-            to: "/get-started-installation",
-            from: [
-              "/getting-started-installation",
-              "/getting-started-common-installation-issues",
-            ],
-          },
+
           {
             to: "/get-started-quickstart",
             from: "/getting-started-quickstart",
@@ -281,13 +271,7 @@ const config = {
               "/Configuration/configuration-backend-only",
             ],
           },
-          {
-            to: "/concepts-publish",
-            from: [
-              "/concepts-api",
-              "/workspace-api",
-            ],
-          },
+
           {
             to: "/components-custom-components",
             from: "/components/custom",

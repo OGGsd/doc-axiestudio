@@ -3,33 +3,34 @@ module.exports = {
     "Get-Started/welcome-to-axiestudio",
     {
       type: "category",
-      label: "Get started",
+      label: "About Axie Studio",
       items: [
         {
           type: "doc",
           id: "Get-Started/about-axiestudio",
           label: "About Axie Studio"
         },
-        {
-          type: "doc",
-          id: "Get-Started/get-started-installation",
-          label: "Install Axie Studio"
-        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Quick Start",
+      items: [
         {
           type: "doc",
           id: "Get-Started/get-started-quickstart",
           label: "Quickstart"
         },
-        {
-          type: "category",
-          label: "Tutorials",
-          items: [
-            "Tutorials/chat-with-rag",
-            "Tutorials/chat-with-files",
-            "Tutorials/agent",
-            "Tutorials/mcp-tutorial",
-          ],
-        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Tutorials",
+      items: [
+        "Tutorials/chat-with-rag",
+        "Tutorials/chat-with-files",
+        "Tutorials/agent",
+        "Tutorials/mcp-tutorial",
       ],
     },
     {
@@ -68,7 +69,7 @@ module.exports = {
             {
               type: "doc",
               id: "Concepts/concepts-publish",
-              label: "Trigger flows with the Axie Studio API"
+              label: "Publish and trigger flows"
             },
             {
               type: "doc",
@@ -91,7 +92,7 @@ module.exports = {
     },
     {
       type: "category",
-      label: "Agents",
+      label: "Agent",
       items: [
         "Agents/agents",
         "Agents/agents-tools",
@@ -110,11 +111,6 @@ module.exports = {
       type: "category",
       label: "Develop",
       items: [
-        {
-          type: "doc",
-          id: "Develop/install-custom-dependencies",
-          label: "Install custom dependencies"
-        },
         "Configuration/configuration-api-keys",
         "Configuration/configuration-authentication",
         "Configuration/configuration-global-variables",
@@ -171,80 +167,7 @@ module.exports = {
         },
       ],
     },
-    {
-      type: "category",
-      label: "Deploy",
-      items: [
-        {
-          type:"doc",
-          id: "Deployment/deployment-overview",
-          label: "Axie Studio deployment overview"
-        },
-        {
-          type: "doc",
-          id: "Deployment/deployment-public-server",
-          label: "Deploy a public Axie Studio server"
-        },
-        {
-          type: "category",
-          label: "Containerized deployments",
-          items: [
-            "Develop/develop-application",
-            {
-              type: "doc",
-              id: "Deployment/deployment-docker",
-              label: "Axie Studio Docker images"
-            },
-            {
-              type: "doc",
-              id: "Deployment/deployment-caddyfile",
-              label: "Deploy Axie Studio on a remote server"
-            },
-            {
-              type: "category",
-              label: "Kubernetes",
-              items: [
-                {
-                  type: "doc",
-                  id: "Deployment/deployment-prod-best-practices",
-                  label: "Axie Studio architecture and best practices"
-                },
-                {
-                  type: "doc",
-                  id: "Deployment/deployment-kubernetes-dev",
-                  label: "Deploy in development"
-                },
-                {
-                  type: "doc",
-                  id: "Deployment/deployment-kubernetes-prod",
-                  label: "Deploy in production"
-                }
-              ]
-            },
-            {
-              type: "doc",
-              id: "Deployment/deployment-gcp",
-              label: "Google Cloud Platform"
-            },
-            {
-              type: "doc",
-              id: "Deployment/deployment-hugging-face-spaces",
-              label: "Hugging Face Spaces"
-            },
-            {
-              type: "doc",
-              id: "Deployment/deployment-railway",
-              label: "Railway"
-            },
-            {
-              type: "doc",
-              id: "Deployment/deployment-render",
-              label: "Render"
-            },
-          ],
-        },
-      ],
-    },
+
     {
       type: "category",
       label: "Components reference",
@@ -368,121 +291,7 @@ module.exports = {
         "Components/components-custom-components",
       ],
     },
-    {
-      type: "category",
-      label: "API reference",
-      items: [
-        {
-          type: "doc",
-          id: "API-Reference/api-reference-api-examples",
-          label: "Get started with the Axie Studio API",
-        },
-        {
-          type: "doc",
-          id: "Develop/Clients/typescript-client",
-          label: "Use the TypeScript client"
-        },
-        {
-          type: "doc",
-          id: "API-Reference/api-flows-run",
-          label: "Flow trigger endpoints",
-        },
-        {
-          type: "doc",
-          id: "API-Reference/api-flows",
-          label: "Flow management endpoints",
-        },
-        {
-          type: "doc",
-          id: "API-Reference/api-files",
-          label: "Files endpoints",
-        },
-        {
-          type: "doc",
-          id: "API-Reference/api-projects",
-          label: "Projects endpoints",
-        },
-        {
-          type: "doc",
-          id: "API-Reference/api-logs",
-          label: "Logs endpoints",
-        },
-        {
-          type: "doc",
-          id: "API-Reference/api-monitor",
-          label: "Monitor endpoints",
-        },
-        {
-          type: "doc",
-          id: "API-Reference/api-build",
-          label: "Build endpoints",
-        },
-        {
-          type: "doc",
-          id: "API-Reference/api-users",
-          label: "Users endpoints",
-        },
-        {
-          type: "link",
-          label: "Axie Studio API specification",
-          href: "/api",
-        },
-      ],
-    },
-    // Contributing section removed for Axie Studio
-    {
-      type: "category",
-      label: "Release notes",
-      items: [
-        {
-          type: "doc",
-          id: "Support/release-notes",
-          label: "Release notes",
-        },
-      ],
-    },
-    {
-      type: "category",
-      label: "Support",
-      items: [
-        {
-          type: "doc",
-          id: "Support/troubleshooting",
-          label: "Troubleshoot",
-        },
-        {
-          type: "doc",
-          id: "Contributing/contributing-github-issues",
-          label: "Get help and request enhancements",
-        },
-        {
-          type: "doc",
-          id: "Support/luna-for-axiestudio",
-          label: "Enterprise support",
-        },
-      ],
-    },
-    {
-      type: "html",
-      className: "sidebar-ad",
-      value: `
-        <a href="https://www.axiestudio.com/desktop" target="_blank" class="menu__link">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g clip-path="url(#clip0_1645_37)">
-              <path d="M12 17H20C21.1046 17 22 16.1046 22 15V13M12 17H4C2.89543 17 2 16.1046 2 15V5C2 3.89543 2.89543 3 4 3H10M12 17V21M8 21H12M12 21H16M11.75 10.2917H13.2083L16.125 7.375H17.5833L20.5 4.45833H21.9583M16.125 11.75H17.5833L20.5 8.83333H21.9583M11.75 5.91667H13.2083L16.125 3H17.5833" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </g>
-            <defs>
-              <clipPath id="clip0_1645_37">
-                <rect width="24" height="24" fill="white"/>
-              </clipPath>
-            </defs>
-          </svg>
-          <div class="sidebar-ad-text-container">
-            <span class="sidebar-ad-text">Get started in minutes</span>
-            <span class="sidebar-ad-text sidebar-ad-text-gradient">Download Axie Studio Desktop</span>
-          </div>
-        </a>
-      `,
-    },
+
+
   ],
 };
