@@ -289,10 +289,6 @@ const config = {
             from: "/integrations-nvidia-system-assist",
           },
           {
-            to: "/deployment-kubernetes-dev",
-            from: "/deployment-kubernetes",
-          },
-          {
             to: "/basic-prompting",
             from: "/starter-projects-basic-prompting",
           },
