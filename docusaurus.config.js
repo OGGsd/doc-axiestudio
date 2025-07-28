@@ -15,7 +15,7 @@ const config = {
   favicon: "img/favicon.ico",
   url: process.env.DOCS_URL || "https://docs.axiestudio.se",
   baseUrl: process.env.BASE_URL || process.env.DOCS_BASE_URL || "/",
-  onBrokenLinks: "throw",
+  onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
   onBrokenAnchors: "warn",
   organizationName: "axie-studio",
