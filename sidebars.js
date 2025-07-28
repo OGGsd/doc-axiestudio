@@ -27,6 +27,7 @@ module.exports = {
       type: "category",
       label: "Tutorials",
       items: [
+        "Tutorials/tutorials",
         "Tutorials/chat-with-rag",
         "Tutorials/chat-with-files",
         "Tutorials/agent",
